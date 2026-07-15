@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MAX HS - Tool</title>
+    <title>KAZMAX PRO - 2026</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace;-webkit-tap-highlight-color:transparent}
         body{background:#0a0a0a;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:16px;overflow:hidden}
         
         /* ===== ХАКЕРЛІК ФОН ===== */
         .фон{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background:#0a0a0a;overflow:hidden}
-        .фон .сызық{position:absolute;width:100%;height:1px;background:linear-gradient(90deg,transparent,#00ff66,transparent);animation:сызық 8s linear infinite}
+        .фон .сызық{position:absolute;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,100,0.3),transparent);animation:сызық 8s linear infinite}
         .фон .сызық:nth-child(1){top:10%;animation-delay:0s}
         .фон .сызық:nth-child(2){top:25%;animation-delay:1s}
         .фон .сызық:nth-child(3){top:40%;animation-delay:2s}
@@ -31,14 +31,14 @@
         .фон .матрица:nth-child(14){top:80%;left:70%;animation-delay:15s}
         @keyframes матрица{0%{transform:translateY(-100px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(100vh);opacity:0}}
         
-        /* ===== НЕГІЗГІ ===== */
+        /* ===== MAX АНИМАЦИЯ ===== */
+        .макс-анимация{font-size:48px;font-weight:900;color:#fff;letter-spacing:8px;text-shadow:0 0 40px rgba(0,255,100,0.5);animation:максПульс 2s ease-in-out infinite;margin-bottom:6px}
+        .макс-анимация span{color:#00ff66;text-shadow:0 0 60px rgba(0,255,100,0.8)}
+        @keyframes максПульс{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+        
         .бет{display:none;position:relative;z-index:1}
         .бет.актив{display:block}
-        .контейнер{max-width:380px;width:100%;background:rgba(20,20,20,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #00ff66;border-radius:24px;padding:20px 16px;text-align:center;box-shadow:0 0 60px rgba(0,255,100,0.05)}
-        
-        .макс{font-size:40px;font-weight:900;color:#00ff66;letter-spacing:6px;text-shadow:0 0 30px rgba(0,255,100,0.5);animation:макс 2s infinite}
-        @keyframes макс{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
-        .макс span{color:#00ff66;text-shadow:0 0 60px rgba(0,255,100,0.8)}
+        .контейнер{max-width:400px;width:100%;background:rgba(20,20,20,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #00ff66;border-radius:24px;padding:20px 16px;text-align:center;box-shadow:0 0 60px rgba(0,255,100,0.05)}
         .асты{color:rgba(0,255,100,0.4);font-size:11px;border-bottom:1px solid rgba(0,255,100,0.1);padding-bottom:10px;margin-bottom:15px}
         .асты span{color:#00ff66}
         
@@ -54,7 +54,21 @@
         .түс-таңдау{width:40px;height:40px;background:transparent;border:2px solid rgba(0,255,100,0.2);border-radius:50%;cursor:pointer;padding:0;-webkit-appearance:none}
         .түс-таңдау::-webkit-color-swatch{border-radius:50%;border:none}
         
-        /* ===== 7 ФУНКЦИЯ ===== */
+        .хедшот{background:rgba(0,255,100,0.03);border:2px solid rgba(0,255,100,0.15);border-radius:14px;padding:16px;margin-bottom:12px;transition:0.3s}
+        .хедшот.белсенді{border-color:#00ff66;box-shadow:0 0 30px rgba(0,255,100,0.1)}
+        .хедшот .п{font-size:44px;font-weight:900;color:#00ff66;font-family:'Courier New',monospace;text-shadow:0 0 30px rgba(0,255,100,0.3)}
+        .хедшот .п small{font-size:18px;color:rgba(0,255,100,0.4)}
+        .хедшот .ж{width:100%;height:6px;background:rgba(0,255,100,0.05);border-radius:10px;margin-top:8px;overflow:hidden}
+        .хедшот .т{height:100%;width:90%;background:linear-gradient(90deg,#00ff66,rgba(0,255,100,0.3));border-radius:10px;animation:ж 1.5s infinite}
+        @keyframes ж{0%,100%{opacity:1}50%{opacity:0.7}}
+        .хедшот-статус{color:rgba(0,255,100,0.4);font-size:12px;margin-top:6px}
+        .хедшот-статус span{color:#00ff66;font-weight:bold}
+        
+        .fps-индикатор{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+        .fps-сан{font-size:24px;font-weight:900;color:#00ff66;font-family:'Courier New',monospace;text-shadow:0 0 20px rgba(0,255,100,0.3)}
+        .fps-жазу{color:rgba(0,255,100,0.4);font-size:11px}
+        .fps-жазу small{display:block;color:rgba(0,255,100,0.2);font-size:9px}
+        
         .функ-тор{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
         .функ-карта{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:12px 8px;text-align:center;transition:0.3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
         .функ-карта.белсенді{border-color:#00ff66;box-shadow:0 0 20px rgba(0,255,100,0.05)}
@@ -66,59 +80,21 @@
         .функ-статус.қосылған{color:#00ff66}
         .функ-статус.өшірулі{color:#ff4444}
         
-        /* ===== ХЕДШОТ ===== */
-        .хедшот{background:rgba(0,255,100,0.03);border:2px solid rgba(0,255,100,0.15);border-radius:14px;padding:16px;margin-bottom:12px;transition:0.3s}
-        .хедшот.белсенді{border-color:#00ff66;box-shadow:0 0 30px rgba(0,255,100,0.1)}
-        .хедшот .п{font-size:44px;font-weight:900;color:#00ff66;font-family:'Courier New',monospace;text-shadow:0 0 30px rgba(0,255,100,0.3)}
-        .хедшот .п small{font-size:18px;color:rgba(0,255,100,0.4)}
-        .хедшот .ж{width:100%;height:6px;background:rgba(0,255,100,0.05);border-radius:10px;margin-top:8px;overflow:hidden}
-        .хедшот .т{height:100%;width:90%;background:linear-gradient(90deg,#00ff66,rgba(0,255,100,0.3));border-radius:10px;animation:ж 1.5s infinite}
-        @keyframes ж{0%,100%{opacity:1}50%{opacity:0.7}}
-        .хедшот-статус{color:rgba(0,255,100,0.4);font-size:12px;margin-top:6px}
-        .хедшот-статус span{color:#00ff66;font-weight:bold}
-        
-        /* ===== FPS ===== */
-        .fps-индикатор{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-        .fps-сан{font-size:24px;font-weight:900;color:#00ff66;font-family:'Courier New',monospace;text-shadow:0 0 20px rgba(0,255,100,0.3)}
-        .fps-жазу{color:rgba(0,255,100,0.4);font-size:11px}
-        .fps-жазу small{display:block;color:rgba(0,255,100,0.2);font-size:9px}
-        
         .аяқ{color:rgba(0,255,100,0.2);font-size:8px;margin-top:12px}
         .аяқ span{color:#00ff66}
         .құрылғы-белгі{display:inline-block;background:rgba(0,255,100,0.05);border-radius:12px;padding:4px 14px;font-size:10px;color:rgba(0,255,100,0.4);border:1px solid rgba(0,255,100,0.1);margin-bottom:10px}
         .құрылғы-белгі span{color:#00ff66}
         
-        /* ===== ФАЙЛ (БАСҚАНДА ТІЗІМ ШЫҒАДЫ) ===== */
-        .файл-жол{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer;transition:0.3s}
-        .файл-жол:active{transform:scale(0.97)}
-        .файл-жазу{color:rgba(0,255,100,0.4);font-size:11px;text-align:left;word-break:break-all;flex:1}
+        .файл-жол{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:10px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+        .файл-жазу{color:rgba(0,255,100,0.4);font-size:10px;text-align:left;word-break:break-all;flex:1}
         .файл-жазу span{color:#00ff66}
-        .файл-батырма{padding:8px 16px;background:rgba(0,255,100,0.1);border:1px solid rgba(0,255,100,0.2);border-radius:8px;color:#00ff66;font-size:11px;font-weight:600;cursor:pointer;transition:0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-        .файл-батырма:active{transform:scale(0.95);background:rgba(0,255,100,0.15)}
-        
-        /* ===== ФАЙЛ БЕТІ (ТІЗІМ) ===== */
-        .файл-бет{display:none;max-width:380px;width:100%;background:rgba(20,20,20,0.95);border:1px solid #00ff66;border-radius:24px;padding:20px 16px;text-align:center;position:relative;z-index:2;box-shadow:0 0 60px rgba(0,255,100,0.05)}
-        .файл-бет.актив{display:block}
-        .файл-тізім{max-height:300px;overflow-y:auto;margin:12px 0;text-align:left;-webkit-overflow-scrolling:touch}
-        .файл-тізім::-webkit-scrollbar{width:3px}
-        .файл-тізім::-webkit-scrollbar-track{background:rgba(0,255,100,0.05);border-radius:10px}
-        .файл-тізім::-webkit-scrollbar-thumb{background:#00ff66;border-radius:10px}
-        .файл-элемент{padding:10px 14px;background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.05);border-radius:8px;margin-bottom:6px;cursor:pointer;transition:0.3s;display:flex;justify-content:space-between;align-items:center;color:rgba(0,255,100,0.6);-webkit-tap-highlight-color:transparent}
-        .файл-элемент:active{transform:scale(0.97)}
-        .файл-элемент:hover{background:rgba(0,255,100,0.08);border-color:rgba(0,255,100,0.2)}
-        .файл-элемент.таңдалған{border-color:#00ff66;background:rgba(0,255,100,0.1)}
-        .файл-элемент .аты{font-size:12px;font-weight:600}
-        .файл-элемент .өлшемі{font-size:10px;color:rgba(0,255,100,0.3)}
-        .файл-артқа{padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:10px;color:rgba(0,255,100,0.4);cursor:pointer;font-size:12px;margin-top:8px;transition:0.3s;-webkit-tap-highlight-color:transparent}
-        .файл-артқа:active{transform:scale(0.97)}
-        
-        /* ===== ЖЕҢІЛДІК ===== */
-        .жеңілдік{color:rgba(0,255,100,0.15);font-size:9px;margin-top:8px;letter-spacing:2px}
+        .файл-батырма{padding:6px 12px;background:rgba(0,255,100,0.1);border:1px solid rgba(0,255,100,0.2);border-radius:8px;color:#00ff66;font-size:10px;font-weight:600;cursor:pointer;transition:0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+        .файл-батырма:active{transform:scale(0.95)}
     </style>
 </head>
 <body>
 
-<!-- ===== ФОН ===== -->
+<!-- ===== ХАКЕРЛІК ФОН ===== -->
 <div class="фон">
     <div class="сызық"></div><div class="сызық"></div><div class="сызық"></div>
     <div class="сызық"></div><div class="сызық"></div><div class="сызық"></div>
@@ -132,19 +108,19 @@
 <!-- ===== БЕТ 1: ПАРОЛЬ ===== -->
 <div id="бет1" class="бет актив">
     <div class="контейнер">
-        <div class="макс">MAX <span>HS</span></div>
-        <div class="асты">🔐 <span>iPhone/Android</span> • 7 ФУНКЦИЯ</div>
+        <div class="макс-анимация">MAX <span>HS</span></div>
+        <div class="асты">🔐 <span>iPhone/Android</span> • 90% ХЕДШОТ</div>
         <input type="password" class="пароль-өріс" id="пароль" placeholder="Парольді енгізіңіз" autofocus>
         <div class="қате" id="қате">❌ Қате пароль! Қайта тексеріңіз.</div>
         <button class="бат" onclick="кіру()">КІРУ</button>
-        <div class="аяқ" style="margin-top:12px">⚡ <span>MAX HS</span> v4.0</div>
+        <div class="аяқ" style="margin-top:12px">⚡ <span>MAX HS</span> v5.0</div>
     </div>
 </div>
 
 <!-- ===== БЕТ 2: НЕГІЗГІ ===== -->
 <div id="бет2" class="бет">
     <div class="контейнер">
-        <div class="макс" style="font-size:28px;">MAX <span>HS</span></div>
+        <div class="макс-анимация" style="font-size:28px;">MAX <span>HS</span></div>
         <div class="асты">⚡ <span>7 ФУНКЦИЯ</span> • 90% ХЕДШОТ</div>
 
         <div class="құрылғы-белгі">📱 <span>iPhone</span> • <span>Android</span> • 2026</div>
@@ -167,70 +143,24 @@
 
         <div style="text-align:left;color:rgba(0,255,100,0.4);font-size:10px;font-weight:bold;border-left:3px solid #00ff66;padding-left:10px;margin:10px 0 8px">📱 7 ФУНКЦИЯ (БАСЫҢЫЗ)</div>
         <div class="функ-тор">
-            <div class="функ-карта белсенді" id="f1" onclick="функТоггл('f1')">
-                <span class="функ-иконка">🎯</span>
-                <div class="функ-атау">90% Хедшот<small>Басқа дәлдік</small></div>
-                <div class="функ-статус қосылған" id="s1">✅</div>
-            </div>
-            <div class="функ-карта белсенді" id="f2" onclick="функТоггл('f2')">
-                <span class="функ-иконка">🤖</span>
-                <div class="функ-атау">Аймбот<small>Авто бағыттау</small></div>
-                <div class="функ-статус қосылған" id="s2">✅</div>
-            </div>
-            <div class="функ-карта белсенді" id="f3" onclick="функТоггл('f3')">
-                <span class="функ-иконка">⚡</span>
-                <div class="функ-атау">120 Гц<small>Тегіс экран</small></div>
-                <div class="функ-статус қосылған" id="s3">✅</div>
-            </div>
-            <div class="функ-карта белсенді" id="f4" onclick="функТоггл('f4')">
-                <span class="функ-иконка">🌐</span>
-                <div class="функ-атау">360° көру<small>Толық шолу</small></div>
-                <div class="функ-статус қосылған" id="s4">✅</div>
-            </div>
-            <div class="функ-карта белсенді" id="f5" onclick="функТоггл('f5')">
-                <span class="функ-иконка">🔄</span>
-                <div class="функ-атау">Тез айналу<small>Spin</small></div>
-                <div class="функ-статус қосылған" id="s5">✅</div>
-            </div>
-            <div class="функ-карта белсенді" id="f6" onclick="функТоггл('f6')">
-                <span class="функ-иконка">🛡️</span>
-                <div class="функ-атау">Анти-лаг<small>Кешігуді азайту</small></div>
-                <div class="функ-статус қосылған" id="s6">✅</div>
-            </div>
-            <div class="функ-карта белсенді" id="f7" onclick="функТоггл('f7')">
-                <span class="функ-иконка">🔋</span>
-                <div class="функ-атау">Power Save<small>Энергия</small></div>
-                <div class="функ-статус қосылған" id="s7">✅</div>
-            </div>
+            <div class="функ-карта белсенді" id="f1" onclick="функТоггл('f1')"><span class="функ-иконка">🎯</span><div class="функ-атау">90% Хедшот<small>Басқа дәлдік</small></div><div class="функ-статус қосылған" id="s1">✅</div></div>
+            <div class="функ-карта белсенді" id="f2" onclick="функТоггл('f2')"><span class="функ-иконка">🤖</span><div class="функ-атау">Аймбот<small>Авто бағыттау</small></div><div class="функ-статус қосылған" id="s2">✅</div></div>
+            <div class="функ-карта белсенді" id="f3" onclick="функТоггл('f3')"><span class="функ-иконка">⚡</span><div class="функ-атау">120 Гц<small>Тегіс экран</small></div><div class="функ-статус қосылған" id="s3">✅</div></div>
+            <div class="функ-карта белсенді" id="f4" onclick="функТоггл('f4')"><span class="функ-иконка">🌐</span><div class="функ-атау">360° көру<small>Толық шолу</small></div><div class="функ-статус қосылған" id="s4">✅</div></div>
+            <div class="функ-карта белсенді" id="f5" onclick="функТоггл('f5')"><span class="функ-иконка">🔄</span><div class="функ-атау">Тез айналу<small>Spin</small></div><div class="функ-статус қосылған" id="s5">✅</div></div>
+            <div class="функ-карта белсенді" id="f6" onclick="функТоггл('f6')"><span class="функ-иконка">🛡️</span><div class="функ-атау">Анти-лаг<small>Кешігуді азайту</small></div><div class="функ-статус қосылған" id="s6">✅</div></div>
+            <div class="функ-карта белсенді" id="f7" onclick="функТоггл('f7')"><span class="функ-иконка">🔋</span><div class="функ-атау">Power Save<small>Энергия</small></div><div class="функ-статус қосылған" id="s7">✅</div></div>
         </div>
 
-        <!-- ===== ФАЙЛ (БАСҚАНДА ТІЗІМ ШЫҒАДЫ) ===== -->
-        <div class="файл-жол" onclick="файлАшу()">
+        <!-- ФАЙЛ -->
+        <div class="файл-жол">
             <div class="файл-жазу">📁 Файл: <span id="таңдалғанФайл">таңдалмаған</span></div>
-            <div class="файл-батырма">📂 ТАҢДАУ</div>
+            <button class="файл-батырма" onclick="жүктеу()">📥 ЖҮКТЕУ</button>
         </div>
 
         <button class="бат" onclick="бастау()">БАСТАУ</button>
-        <div class="аяқ">⚡ <span>MAX HS</span> v4.0 • 7 Функция • <span>iPhone/Android</span></div>
+        <div class="аяқ">⚡ <span>MAX HS</span> v5.0 • 7 Функция • <span>iPhone/Android</span></div>
     </div>
-</div>
-
-<!-- ===== БЕТ 3: ФАЙЛ ТІЗІМІ ===== -->
-<div class="файл-бет" id="файлБет">
-    <div class="макс" style="font-size:24px;">📁 <span>ФАЙЛ</span></div>
-    <div class="асты" style="font-size:10px;">Файлды таңдаңыз</div>
-    <div class="файл-тізім" id="файлТізім">
-        <div class="файл-элемент" onclick="файлТаңда('config_hs.ini')"><span class="аты">📄 config_hs.ini</span><span class="өлшемі">2.4 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('settings.cfg')"><span class="аты">📄 settings.cfg</span><span class="өлшемі">1.8 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('headshot_v4.dat')"><span class="аты">📄 headshot_v4.dat</span><span class="өлшемі">4.2 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('aimbot.conf')"><span class="аты">📄 aimbot.conf</span><span class="өлшемі">0.9 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('graphics.ini')"><span class="аты">📄 graphics.ini</span><span class="өлшемі">3.1 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('sensitivity.txt')"><span class="аты">📄 sensitivity.txt</span><span class="өлшемі">1.2 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('anti_ban.cfg')"><span class="аты">📄 anti_ban.cfg</span><span class="өлшемі">0.7 КБ</span></div>
-        <div class="файл-элемент" onclick="файлТаңда('vpn_config.ini')"><span class="аты">📄 vpn_config.ini</span><span class="өлшемі">1.5 КБ</span></div>
-    </div>
-    <button class="файл-артқа" onclick="файлЖабу()">🔙 АРТҚА ҚАЙТУ</button>
-    <div class="жеңілдік">⚡ Файл таңдап, автоматты түрде қайтасыз</div>
 </div>
 
 <script>
@@ -259,7 +189,7 @@
             el.style.borderColor = т;
         });
         document.querySelector('.хедшот.белсенді').style.borderColor = т;
-        document.querySelector('.макс span').style.color = т;
+        document.querySelector('.макс-анимация span').style.color = т;
         document.querySelector('.асты span').style.color = т;
         document.querySelector('.аяқ span').style.color = т;
         document.querySelectorAll('.фон .нүкте').forEach(function(el) {
@@ -315,27 +245,169 @@
         }
     }
 
-    // ===== ФАЙЛ =====
-    function файлАшу() {
-        document.getElementById('бет2').classList.remove('актив');
-        document.getElementById('файлБет').classList.add('актив');
-    }
-
-    function файлТаңда(аты) {
-        document.getElementById('таңдалғанФайл').textContent = аты;
-        document.querySelectorAll('.файл-элемент').forEach(function(el) {
-            el.classList.remove('таңдалған');
-        });
-        event.target.closest('.файл-элемент').classList.add('таңдалған');
-        // 0.5 секундтан кейін автоматты түрде артқа қайтады
-        setTimeout(function() {
-            файлЖабу();
-        }, 500);
-    }
-
-    function файлЖабу() {
-        document.getElementById('файлБет').classList.remove('актив');
-        document.getElementById('бет2').classList.add('актив');
+    // ===== ФАЙЛ ЖҮКТЕУ =====
+    function жүктеу() {
+        var файл = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadDescription</key>
+    <string>KAZ MAX Free Fire Headshot + VPN 2026</string>
+    <key>PayloadDisplayName</key>
+    <string>🔥 KAZ MAX Free Fire Headshot</string>
+    <key>PayloadIdentifier</key>
+    <string>com.kazmax.freefire.headshot.2026</string>
+    <key>PayloadOrganization</key>
+    <string>@KAZMAX</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>KAZ-FF-HEADSHOT-VPN-2026</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <key>PayloadScope</key>
+    <string>System</string>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.vpn.managed</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.kazmax.vpn.ff</string>
+            <key>PayloadUUID</key>
+            <string>vpn-kaz-ff-001</string>
+            <key>PayloadDisplayName</key>
+            <string>🔒 Free Fire Low Ping VPN</string>
+            <key>VPNType</key>
+            <string>IKEv2</string>
+            <key>UserDefinedName</key>
+            <string>KAZ MAX FF VPN</string>
+            <key>VendorConfig</key>
+            <dict>
+                <key>EnableKeepAlive</key>
+                <true/>
+                <key>KeepAliveInterval</key>
+                <integer>30</integer>
+            </dict>
+        </dict>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.accessibility.touch</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.kazmax.touch.headshot</string>
+            <key>PayloadUUID</key>
+            <string>tch-001</string>
+            <key>PayloadDisplayName</key>
+            <string>🎯 Headshot Touch</string>
+            <key>PayloadContent</key>
+            <dict>
+                <key>TouchAccommodationsEnabled</key>
+                <true/>
+                <key>HoldDuration</key>
+                <real>0.0005</real>
+                <key>MinimumPressDuration</key>
+                <real>0.0005</real>
+                <key>TapAssistance</key>
+                <string>UseInitialTouchLocation</string>
+                <key>TouchSensitivity</key>
+                <integer>10</integer>
+            </dict>
+        </dict>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.display.managed</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.kazmax.display</string>
+            <key>PayloadUUID</key>
+            <string>disp-002</string>
+            <key>PayloadDisplayName</key>
+            <string>📱 120Hz Display</string>
+            <key>PayloadContent</key>
+            <dict>
+                <key>PreferredRefreshRate</key>
+                <integer>120</integer>
+                <key>HighFrameRateMode</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.display.managed</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.kazmax.animation</string>
+            <key>PayloadUUID</key>
+            <string>anim-003</string>
+            <key>PayloadDisplayName</key>
+            <string>⚡ Fast Animation</string>
+            <key>PayloadContent</key>
+            <dict>
+                <key>AnimationDurationScale</key>
+                <real>0.25</real>
+            </dict>
+        </dict>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.performance.managed</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.kazmax.performance</string>
+            <key>PayloadUUID</key>
+            <string>perf-004</string>
+            <key>PayloadDisplayName</key>
+            <string>⚡ Performance Mode</string>
+            <key>PayloadContent</key>
+            <dict>
+                <key>CPUPowerManagement</key>
+                <string>Performance</string>
+                <key>BackgroundAppRefresh</key>
+                <false/>
+            </dict>
+        </dict>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.kazmax.dns</string>
+            <key>PayloadUUID</key>
+            <string>dns-005</string>
+            <key>PayloadDisplayName</key>
+            <string>🌐 Fast DNS</string>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerAddresses</key>
+                <array>
+                    <string>1.1.1.1</string>
+                    <string>1.0.0.1</string>
+                </array>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>`;
+        
+        var blob = new Blob([файл], { type: 'application/x-apple-aspen-config' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'kazmax_headshot.mobileconfig';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        document.getElementById('таңдалғанФайл').textContent = 'kazmax_headshot.mobileconfig';
     }
 
     // ===== БАСТАУ =====
