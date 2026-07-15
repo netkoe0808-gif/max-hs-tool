@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MAX HS - iPhone & Android</title>
+    <title>MAX HS - Tool</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace;-webkit-tap-highlight-color:transparent}
         body{background:#0a0a0a;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:16px;overflow:hidden}
         
         /* ===== ХАКЕРЛІК ФОН ===== */
         .фон{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background:#0a0a0a;overflow:hidden}
-        .фон .сызық{position:absolute;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,100,0.3),transparent);animation:сызық 8s linear infinite}
+        .фон .сызық{position:absolute;width:100%;height:1px;background:linear-gradient(90deg,transparent,#00ff66,transparent);animation:сызық 8s linear infinite}
         .фон .сызық:nth-child(1){top:10%;animation-delay:0s}
         .фон .сызық:nth-child(2){top:25%;animation-delay:1s}
         .фон .сызық:nth-child(3){top:40%;animation-delay:2s}
@@ -34,7 +34,7 @@
         /* ===== НЕГІЗГІ ===== */
         .бет{display:none;position:relative;z-index:1}
         .бет.актив{display:block}
-        .контейнер{max-width:380px;width:100%;background:rgba(20,20,20,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,255,100,0.2);border-radius:24px;padding:20px 16px;text-align:center}
+        .контейнер{max-width:380px;width:100%;background:rgba(20,20,20,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #00ff66;border-radius:24px;padding:20px 16px;text-align:center;box-shadow:0 0 60px rgba(0,255,100,0.05)}
         
         .макс{font-size:40px;font-weight:900;color:#00ff66;letter-spacing:6px;text-shadow:0 0 30px rgba(0,255,100,0.5);animation:макс 2s infinite}
         @keyframes макс{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
@@ -46,7 +46,7 @@
         .пароль-өріс:focus{border-color:#00ff66;box-shadow:0 0 30px rgba(0,255,100,0.1)}
         .пароль-өріс::placeholder{color:rgba(0,255,100,0.3)}
         .қате{color:#ff4444;display:none;margin-bottom:12px;font-size:13px}
-        .бат{width:100%;padding:16px;background:linear-gradient(180deg,rgba(0,255,100,0.15),rgba(0,255,100,0.05));border:1px solid rgba(0,255,100,0.3);border-radius:12px;color:#00ff66;font-size:18px;font-weight:900;cursor:pointer;text-transform:uppercase;transition:0.3s;-webkit-tap-highlight-color:transparent}
+        .бат{width:100%;padding:16px;background:linear-gradient(180deg,rgba(0,255,100,0.15),rgba(0,255,100,0.05));border:1px solid #00ff66;border-radius:12px;color:#00ff66;font-size:18px;font-weight:900;cursor:pointer;text-transform:uppercase;transition:0.3s;-webkit-tap-highlight-color:transparent}
         .бат:active{transform:scale(0.96);background:rgba(0,255,100,0.1)}
         
         .түс-жол{display:flex;justify-content:space-between;align-items:center;background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:10px 14px;margin-bottom:12px}
@@ -88,13 +88,16 @@
         .құрылғы-белгі{display:inline-block;background:rgba(0,255,100,0.05);border-radius:12px;padding:4px 14px;font-size:10px;color:rgba(0,255,100,0.4);border:1px solid rgba(0,255,100,0.1);margin-bottom:10px}
         .құрылғы-белгі span{color:#00ff66}
         
-        /* ===== ФАЙЛ ===== */
-        .файл-жол{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+        /* ===== ФАЙЛ (БАСҚАНДА ТІЗІМ ШЫҒАДЫ) ===== */
+        .файл-жол{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer;transition:0.3s}
+        .файл-жол:active{transform:scale(0.97)}
         .файл-жазу{color:rgba(0,255,100,0.4);font-size:11px;text-align:left;word-break:break-all;flex:1}
         .файл-жазу span{color:#00ff66}
         .файл-батырма{padding:8px 16px;background:rgba(0,255,100,0.1);border:1px solid rgba(0,255,100,0.2);border-radius:8px;color:#00ff66;font-size:11px;font-weight:600;cursor:pointer;transition:0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
         .файл-батырма:active{transform:scale(0.95);background:rgba(0,255,100,0.15)}
-        .файл-бет{display:none;max-width:380px;width:100%;background:rgba(20,20,20,0.95);border:1px solid rgba(0,255,100,0.2);border-radius:24px;padding:20px 16px;text-align:center;position:relative;z-index:2}
+        
+        /* ===== ФАЙЛ БЕТІ (ТІЗІМ) ===== */
+        .файл-бет{display:none;max-width:380px;width:100%;background:rgba(20,20,20,0.95);border:1px solid #00ff66;border-radius:24px;padding:20px 16px;text-align:center;position:relative;z-index:2;box-shadow:0 0 60px rgba(0,255,100,0.05)}
         .файл-бет.актив{display:block}
         .файл-тізім{max-height:300px;overflow-y:auto;margin:12px 0;text-align:left;-webkit-overflow-scrolling:touch}
         .файл-тізім::-webkit-scrollbar{width:3px}
@@ -108,11 +111,14 @@
         .файл-элемент .өлшемі{font-size:10px;color:rgba(0,255,100,0.3)}
         .файл-артқа{padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:10px;color:rgba(0,255,100,0.4);cursor:pointer;font-size:12px;margin-top:8px;transition:0.3s;-webkit-tap-highlight-color:transparent}
         .файл-артқа:active{transform:scale(0.97)}
+        
+        /* ===== ЖЕҢІЛДІК ===== */
+        .жеңілдік{color:rgba(0,255,100,0.15);font-size:9px;margin-top:8px;letter-spacing:2px}
     </style>
 </head>
 <body>
 
-<!-- ===== ХАКЕРЛІК ФОН ===== -->
+<!-- ===== ФОН ===== -->
 <div class="фон">
     <div class="сызық"></div><div class="сызық"></div><div class="сызық"></div>
     <div class="сызық"></div><div class="сызық"></div><div class="сызық"></div>
@@ -148,20 +154,17 @@
             <input type="color" class="түс-таңдау" id="түс" value="#00ff66" oninput="түсӨзгерту(this.value)">
         </div>
 
-        <!-- ХЕДШОТ -->
         <div class="хедшот" id="хедшот">
             <div class="п">90<small>%</small></div>
             <div class="ж"><div class="т"></div></div>
             <div class="хедшот-статус">🎯 Хедшот: <span>ЭЛИТАРЛЫ</span></div>
         </div>
 
-        <!-- FPS -->
         <div class="fps-индикатор">
             <span class="fps-сан" id="fpsСан">120</span>
             <div class="fps-жазу">FPS <small>Кадр/сек</small></div>
         </div>
 
-        <!-- 7 ФУНКЦИЯ -->
         <div style="text-align:left;color:rgba(0,255,100,0.4);font-size:10px;font-weight:bold;border-left:3px solid #00ff66;padding-left:10px;margin:10px 0 8px">📱 7 ФУНКЦИЯ (БАСЫҢЫЗ)</div>
         <div class="функ-тор">
             <div class="функ-карта белсенді" id="f1" onclick="функТоггл('f1')">
@@ -201,10 +204,10 @@
             </div>
         </div>
 
-        <!-- ФАЙЛ -->
-        <div class="файл-жол">
+        <!-- ===== ФАЙЛ (БАСҚАНДА ТІЗІМ ШЫҒАДЫ) ===== -->
+        <div class="файл-жол" onclick="файлАшу()">
             <div class="файл-жазу">📁 Файл: <span id="таңдалғанФайл">таңдалмаған</span></div>
-            <button class="файл-батырма" onclick="файлАшу()">📂 ТАҢДАУ</button>
+            <div class="файл-батырма">📂 ТАҢДАУ</div>
         </div>
 
         <button class="бат" onclick="бастау()">БАСТАУ</button>
@@ -212,7 +215,7 @@
     </div>
 </div>
 
-<!-- ===== БЕТ 3: ФАЙЛ ===== -->
+<!-- ===== БЕТ 3: ФАЙЛ ТІЗІМІ ===== -->
 <div class="файл-бет" id="файлБет">
     <div class="макс" style="font-size:24px;">📁 <span>ФАЙЛ</span></div>
     <div class="асты" style="font-size:10px;">Файлды таңдаңыз</div>
@@ -227,7 +230,7 @@
         <div class="файл-элемент" onclick="файлТаңда('vpn_config.ini')"><span class="аты">📄 vpn_config.ini</span><span class="өлшемі">1.5 КБ</span></div>
     </div>
     <button class="файл-артқа" onclick="файлЖабу()">🔙 АРТҚА ҚАЙТУ</button>
-    <div class="аяқ" style="margin-top:8px;">⚡ <span>MAX HS</span> v4.0</div>
+    <div class="жеңілдік">⚡ Файл таңдап, автоматты түрде қайтасыз</div>
 </div>
 
 <script>
@@ -265,6 +268,9 @@
         });
         document.querySelectorAll('.фон .сызық').forEach(function(el) {
             el.style.background = 'linear-gradient(90deg,transparent,' + т + '99,transparent)';
+        });
+        document.querySelectorAll('.контейнер, .файл-бет').forEach(function(el) {
+            el.style.borderColor = т;
         });
     }
 
@@ -321,9 +327,10 @@
             el.classList.remove('таңдалған');
         });
         event.target.closest('.файл-элемент').classList.add('таңдалған');
+        // 0.5 секундтан кейін автоматты түрде артқа қайтады
         setTimeout(function() {
             файлЖабу();
-        }, 300);
+        }, 500);
     }
 
     function файлЖабу() {
