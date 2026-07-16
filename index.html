@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MAX HS - Tool</title>
+    <title>MAX HS - iPhone & Android</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace;-webkit-tap-highlight-color:transparent}
         body{background:#0a0a0a;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:16px;overflow:hidden}
         
+        /* ===== ХАКЕРЛІК ФОН ===== */
         .фон{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background:#0a0a0a;overflow:hidden}
         .фон .сызық{position:absolute;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,100,0.3),transparent);animation:сызық 8s linear infinite}
         .фон .сызық:nth-child(1){top:10%;animation-delay:0s}
@@ -30,6 +31,7 @@
         .фон .матрица:nth-child(14){top:80%;left:70%;animation-delay:15s}
         @keyframes матрица{0%{transform:translateY(-100px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(100vh);opacity:0}}
         
+        /* ===== НЕГІЗГІ ===== */
         .бет{display:none;position:relative;z-index:1}
         .бет.актив{display:block}
         .контейнер{max-width:380px;width:100%;background:rgba(20,20,20,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,255,100,0.2);border-radius:24px;padding:20px 16px;text-align:center}
@@ -52,6 +54,7 @@
         .түс-таңдау{width:40px;height:40px;background:transparent;border:2px solid rgba(0,255,100,0.2);border-radius:50%;cursor:pointer;padding:0;-webkit-appearance:none}
         .түс-таңдау::-webkit-color-swatch{border-radius:50%;border:none}
         
+        /* ===== 7 ФУНКЦИЯ ===== */
         .функ-тор{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
         .функ-карта{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:12px 8px;text-align:center;transition:0.3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
         .функ-карта.белсенді{border-color:#00ff66;box-shadow:0 0 20px rgba(0,255,100,0.05)}
@@ -63,6 +66,7 @@
         .функ-статус.қосылған{color:#00ff66}
         .функ-статус.өшірулі{color:#ff4444}
         
+        /* ===== ХЕДШОТ ===== */
         .хедшот{background:rgba(0,255,100,0.03);border:2px solid rgba(0,255,100,0.15);border-radius:14px;padding:16px;margin-bottom:12px;transition:0.3s}
         .хедшот.белсенді{border-color:#00ff66;box-shadow:0 0 30px rgba(0,255,100,0.1)}
         .хедшот .п{font-size:44px;font-weight:900;color:#00ff66;font-family:'Courier New',monospace;text-shadow:0 0 30px rgba(0,255,100,0.3)}
@@ -73,6 +77,7 @@
         .хедшот-статус{color:rgba(0,255,100,0.4);font-size:12px;margin-top:6px}
         .хедшот-статус span{color:#00ff66;font-weight:bold}
         
+        /* ===== FPS ===== */
         .fps-индикатор{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
         .fps-сан{font-size:24px;font-weight:900;color:#00ff66;font-family:'Courier New',monospace;text-shadow:0 0 20px rgba(0,255,100,0.3)}
         .fps-жазу{color:rgba(0,255,100,0.4);font-size:11px}
@@ -83,6 +88,7 @@
         .құрылғы-белгі{display:inline-block;background:rgba(0,255,100,0.05);border-radius:12px;padding:4px 14px;font-size:10px;color:rgba(0,255,100,0.4);border:1px solid rgba(0,255,100,0.1);margin-bottom:10px}
         .құрылғы-белгі span{color:#00ff66}
         
+        /* ===== ФАЙЛ ===== */
         .файл-жол{background:rgba(0,255,100,0.03);border:1px solid rgba(0,255,100,0.1);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
         .файл-жазу{color:rgba(0,255,100,0.4);font-size:11px;text-align:left;word-break:break-all;flex:1}
         .файл-жазу span{color:#00ff66}
@@ -106,6 +112,7 @@
 </head>
 <body>
 
+<!-- ===== ХАКЕРЛІК ФОН ===== -->
 <div class="фон">
     <div class="сызық"></div><div class="сызық"></div><div class="сызық"></div>
     <div class="сызық"></div><div class="сызық"></div><div class="сызық"></div>
@@ -116,6 +123,7 @@
     <div class="матрица">01000001 01001110 01000100 01010010 01001111 01001001 01000100</div>
 </div>
 
+<!-- ===== БЕТ 1: ПАРОЛЬ ===== -->
 <div id="бет1" class="бет актив">
     <div class="контейнер">
         <div class="макс">MAX <span>HS</span></div>
@@ -127,6 +135,7 @@
     </div>
 </div>
 
+<!-- ===== БЕТ 2: НЕГІЗГІ ===== -->
 <div id="бет2" class="бет">
     <div class="контейнер">
         <div class="макс" style="font-size:28px;">MAX <span>HS</span></div>
@@ -139,17 +148,20 @@
             <input type="color" class="түс-таңдау" id="түс" value="#00ff66" oninput="түсӨзгерту(this.value)">
         </div>
 
+        <!-- ХЕДШОТ -->
         <div class="хедшот" id="хедшот">
             <div class="п">90<small>%</small></div>
             <div class="ж"><div class="т"></div></div>
             <div class="хедшот-статус">🎯 Хедшот: <span>ЭЛИТАРЛЫ</span></div>
         </div>
 
+        <!-- FPS -->
         <div class="fps-индикатор">
             <span class="fps-сан" id="fpsСан">120</span>
             <div class="fps-жазу">FPS <small>Кадр/сек</small></div>
         </div>
 
+        <!-- 7 ФУНКЦИЯ -->
         <div style="text-align:left;color:rgba(0,255,100,0.4);font-size:10px;font-weight:bold;border-left:3px solid #00ff66;padding-left:10px;margin:10px 0 8px">📱 7 ФУНКЦИЯ (БАСЫҢЫЗ)</div>
         <div class="функ-тор">
             <div class="функ-карта белсенді" id="f1" onclick="функТоггл('f1')">
@@ -189,6 +201,7 @@
             </div>
         </div>
 
+        <!-- ФАЙЛ -->
         <div class="файл-жол">
             <div class="файл-жазу">📁 Файл: <span id="таңдалғанФайл">таңдалмаған</span></div>
             <button class="файл-батырма" onclick="файлАшу()">📂 ТАҢДАУ</button>
@@ -199,6 +212,7 @@
     </div>
 </div>
 
+<!-- ===== БЕТ 3: ФАЙЛ ===== -->
 <div class="файл-бет" id="файлБет">
     <div class="макс" style="font-size:24px;">📁 <span>ФАЙЛ</span></div>
     <div class="асты" style="font-size:10px;">Файлды таңдаңыз</div>
@@ -217,6 +231,7 @@
 </div>
 
 <script>
+    // ===== ПАРОЛЬ =====
     function кіру() {
         var п = document.getElementById('пароль').value.trim();
         if (п.toUpperCase() === "MAX2026") {
@@ -231,6 +246,7 @@
         if (e.key === 'Enter') кіру();
     });
 
+    // ===== ТҮС =====
     function түсӨзгерту(т) {
         document.querySelector('.хедшот .п').style.color = т;
         document.querySelector('.хедшот .т').style.background = 'linear-gradient(90deg, ' + т + ', rgba(0,0,0,0.2))';
@@ -252,6 +268,7 @@
         });
     }
 
+    // ===== 7 ФУНКЦИЯ =====
     function функТоггл(id) {
         var карта = document.getElementById(id);
         var статус = document.getElementById('s' + id.slice(1));
@@ -292,6 +309,7 @@
         }
     }
 
+    // ===== ФАЙЛ =====
     function файлАшу() {
         document.getElementById('бет2').classList.remove('актив');
         document.getElementById('файлБет').classList.add('актив');
@@ -313,6 +331,7 @@
         document.getElementById('бет2').classList.add('актив');
     }
 
+    // ===== БАСТАУ =====
     function бастау() {
         var хедшот = document.getElementById('f1').classList.contains('белсенді') ? '✅' : '❌';
         var аймбот = document.getElementById('f2').classList.contains('белсенді') ? '✅' : '❌';
@@ -332,4 +351,17 @@
             '🤖 Аймбот: ' + аймбот + '\n' +
             '⚡ 120 Гц: ' + гц + '\n' +
             '🌐 360° көру: ' + көру + '\n' +
-            '🔄 Тез айналу: ' +
+            '🔄 Тез айналу: ' + айналу + '\n' +
+            '🛡️ Анти-лаг: ' + антилаг + '\n' +
+            '🔋 Power Save: ' + энергия + '\n' +
+            '═══════════════════════\n' +
+            '🎮 Free Fire іске қосылуда...'
+        );
+        window.location.href = "freefire://";
+        setTimeout(function() {
+            window.location.href = "intent://apps/#Intent;scheme=android-app;package=com.dts.freefireth;end";
+        }, 150);
+    }
+</script>
+</body>
+</html>
